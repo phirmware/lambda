@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: An AWS Lambda application that calls the Lambda API.
+Resources:
+  health:
+    Type: AWS::Lambda::Function
+    Properties:
+      Role: arn:aws:iam::937105331058:role/service-role/local-function-role-lg6fuw0l
+      Runtime: nodejs12.x
+      Handler: index.health
+      Code: functions/
+  about:
+    Type: AWS::Lambda::Function
+    Properties:
+      Role: arn:aws:iam::937105331058:role/service-role/local-function-role-lg6fuw0l
+      Runtime: nodejs12.x
+      Handler: index.about
+      Code: functions/
