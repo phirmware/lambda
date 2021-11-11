@@ -24,3 +24,22 @@ jobs:
 
     - name: Run test
       run: npm run test
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+
+    - name: Package with cloud formation
+      run: |
+        aws cloudformation package --template-file template.yml --s3-bucket phirmware-lambda-test --output-template-file out.yml 
+
+    - name: Check out template
+      run: |
+         cat out.yml
+
+    - name: Deploy to Stacks with cloud formation
+      run: |
+        aws cloudformation deploy --template-file out.yml --stack-name phirmware-lambda-stack
