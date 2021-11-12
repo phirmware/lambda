@@ -15,3 +15,10 @@ Resources:
       Runtime: nodejs12.x
       Handler: index.about
       Code: functions/
+  processSns:
+    Type: AWS::Lambda::Function
+    Properties:
+      Role: arn:aws:iam::937105331058:role/service-role/local-function-role-lg6fuw0l
+      Runtime: nodejs12.x
+      Handler: index.processSns
+      Code: functions/
