@@ -26,6 +26,7 @@ async function about (event, context) {
 
 async function processSns (event, context) {
   return {
-    description: 'Sns func'
+    description: 'Sns func',
+    event
   }
 }
