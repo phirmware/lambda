@@ -25,6 +25,7 @@ async function about (event, context) {
 }
 
 async function processSns (event, context) {
+  console.log('sns message recieved, processing', event)
   return {
     description: 'Sns func',
     event
