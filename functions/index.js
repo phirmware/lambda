@@ -1,5 +1,6 @@
 module.exports = {
   health,
+  processSns,
   about
 }
 
@@ -20,5 +21,12 @@ async function health (event, context) {
 async function about (event, context) {
   return {
     description: 'AWS LAMBDA functions with cloud formation'
+  }
+}
+
+async function processSns (event, context) {
+  return {
+    description: 'Sns func',
+    event
   }
 }

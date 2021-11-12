@@ -27,3 +27,10 @@ tape('about should return info string', async function (t) {
   t.equal(result.description, expected)
   t.end()
 })
+
+tape('sns func should return short description', async function (t) {
+  const result = await index.processSns(null, null)
+
+  t.equal(result.description, 'Sns func')
+  t.end()
+})
