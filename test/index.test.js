@@ -1,6 +1,8 @@
 const tape = require('tape')
 const index = require('../functions/index')
 
+const snsTestJson = require('./mocks/sns-event.json')
+
 tape('health should return data', async function (t) {
   const event = {
     event1: 'event1',
@@ -28,9 +30,10 @@ tape('about should return info string', async function (t) {
   t.end()
 })
 
-tape('sns func should return short description', async function (t) {
-  const result = await index.processSns(null, null)
+tape('sns function should map sns record info properly', async function (t) {
+  const result = await index.processSns(snsTestJson, null)
+  const expected = [ { Signature: 'EXAMPLE', Message: 'example message' } ]
 
-  t.equal(result.description, 'Sns func')
+  t.deepEqual(result, expected)
   t.end()
 })
